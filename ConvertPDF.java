@@ -48,7 +48,7 @@ import javafx.scene.text.Text;
 
 public class ConvertPDF extends Application{
 
-	public static  String fileDest = "/Users/Shubham/Desktop/converted.pdf";
+````public static  String fileDest = "/Users/Shubham/Desktop/converted.pdf";
     public static  String originalImage = "/Users/Shubham/Desktop/";
     //final Text source = new Text(50, 100, "DRAG ME");
      Text target = new Text("DROP HERE");
@@ -62,7 +62,7 @@ public class ConvertPDF extends Application{
 
 	protected void createPdf(String dest) throws FileNotFoundException, MalformedURLException, IOException{
 
-		  	PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+		PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 	        PageSize pageSize = new PageSize(PageSize.A4);//with I write this it rotate the file=> .rotate();
 	        Document doc = new Document(pdfDoc, pageSize);
 	        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
@@ -86,36 +86,26 @@ public class ConvertPDF extends Application{
 		 // folderPath.mkdir();
 	        primaryStage.setTitle("ConvertToPDF!");
 
+	        // Create the VBox
+	        VBox root = new VBox();
 
+		  // Add the Pane and The LoggingArea to the VBox
+		  
+		  //   root.getChildren().addAll(/*pane,*/loggingArea);
 
+		  // Set the Style of the VBox
 
+		  root.setStyle("-fx-padding: 10;" +
 
+		  "-fx-border-style: solid inside;" +
 
+		  "-fx-border-width: 2;" +
 
-	                // Create the VBox
+		  "-fx-border-insets: 5;" +
 
-	                VBox root = new VBox();
+		  "-fx-border-radius: 5;" +
 
-	                // Add the Pane and The LoggingArea to the VBox
-
-	             //   root.getChildren().addAll(/*pane,*/loggingArea);
-
-	                // Set the Style of the VBox
-
-	                root.setStyle("-fx-padding: 10;" +
-
-	                    "-fx-border-style: solid inside;" +
-
-	                    "-fx-border-width: 2;" +
-
-	                    "-fx-border-insets: 5;" +
-
-	                    "-fx-border-radius: 5;" +
-
-	                    "-fx-border-color: blue;" + "-fx-font-size: 46; "  );
-
-
-
+		  "-fx-border-color: blue;" + "-fx-font-size: 46; "  );
 
 
 
@@ -156,21 +146,9 @@ public class ConvertPDF extends Application{
 
 	                 event.consume();
 	            }
-	        });
+	        }
+	);
 
-	       /* //Text Field
-	        userTextField.getText();
-	        userTextField.setOnAction( new EventHandler<ActionEvent>() {
-	        		public void handle(ActionEvent event) {
-	        			System.out.print("TextField");
-	        			if(userTextField.getText() != null) {
-		            		originalImage += userTextField.getText();
-		                System.out.println("Path Saved!");
-		                System.out.println(originalImage);
-		            	}
-		        }
-	        });
-	        */
 	        Text whatever = new Text("        ");
 	        //Button
 	        Button btn = new Button();
@@ -214,185 +192,3 @@ public class ConvertPDF extends Application{
 
 	    }
 }
-
-
-
-
-
-
-
-// sourceFld.setPrefSize(200, 20);
-
-       //  targetFld.setPrefSize(200, 20);
-
-
-
-         // Create the Labels
-
-        // Label sourceLbl = new Label("Source Node:");
-
-         //Label targetLbl = new Label("Target Node:");
-
-
-
-         // Create the GridPane
-
-         //GridPane pane = new GridPane();
-
-        // pane.setHgap(5);
-
-        // pane.setVgap(20);
-
-
-
-         // Add the Labels and Fields to the Pane
-
-        // pane.addRow(0, sourceLbl, sourceFld);
-
-        // pane.addRow(1, targetLbl, targetFld);
-
-
-
-         // Add mouse event handlers for the source
-
-      /*   sourceFld.setOnMousePressed(new EventHandler <MouseEvent>()
-
-         {
-
-             public void handle(MouseEvent event)
-
-             {
-
-                 sourceFld.setMouseTransparent(true);
-
-                 System.out.print("Event on Source: mouse pressed");
-
-                 event.setDragDetect(true);
-
-             }
-
-         });
-*/
-
-
-      /*   sourceFld.setOnMouseReleased(new EventHandler <MouseEvent>()
-
-         {
-
-             public void handle(MouseEvent event)
-
-             {
-
-                 sourceFld.setMouseTransparent(false);
-
-                 System.out.print("Event on Source: mouse released");
-
-             }
-
-         });
-
-
-
-         sourceFld.setOnMouseDragged(new EventHandler <MouseEvent>()
-
-         {
-
-             public void handle(MouseEvent event)
-
-             {
-
-             	System.out.print("Event on Source: mouse dragged");
-
-                 event.setDragDetect(false);
-
-             }
-
-         });
-
-
-
-         sourceFld.setOnDragDetected(new EventHandler <MouseEvent>()
-
-         {
-
-             public void handle(MouseEvent event)
-
-             {
-
-                 sourceFld.startFullDrag();
-
-                 System.out.print("Event on Source: drag detected");
-
-             }
-
-         });
-
-  */
-
-         // Add mouse event handlers for the target
-/*
-         targetFld.setOnMouseDragEntered(new EventHandler <MouseDragEvent>()
-
-         {
-
-             public void handle(MouseDragEvent event)
-
-             {
-
-             	System.out.print("Event on Target: mouse dragged");
-
-             }
-
-         });
-
-
-
-         targetFld.setOnMouseDragOver(new EventHandler <MouseDragEvent>()
-
-         {
-
-             public void handle(MouseDragEvent event)
-
-             {
-
-             	System.out.print("Event on Target: mouse drag over");
-
-             }
-
-         });
-
-
-
-         targetFld.setOnMouseDragReleased(new EventHandler <MouseDragEvent>()
-
-         {
-
-             public void handle(MouseDragEvent event)
-
-             {
-
-                 targetFld.setText(sourceFld.getSelectedText());
-
-                 System.out.print("Event on Target: mouse drag released");
-
-             }
-
-         });
-
-
-
-         targetFld.setOnMouseDragExited(new EventHandler <MouseDragEvent>()
-
-         {
-
-             public void handle(MouseDragEvent event)
-
-             {
-
-             	System.out.print("Event on Target: mouse drag exited");
-
-             }
-
-         });
-
-  */
